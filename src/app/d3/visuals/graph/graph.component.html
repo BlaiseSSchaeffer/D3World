@@ -1,0 +1,6 @@
+<svg #svg [attr.width]="svgOptions.width" [attr.height]="svgOptions.height">
+  <g [appZoomable]="svg">
+    <g [appLinkVisual]="link" *ngFor="let link of links"></g>
+    <g [appNodeVisual]="node" [labelAccessor]="labelAccessor" [appDraggableNode]="node" [draggableInGraph]="graph" *ngFor="let node of nodes"></g>
+  </g>
+</svg>

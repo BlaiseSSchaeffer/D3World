@@ -1,0 +1,4 @@
+<div *ngIf="familyLoading"></div>
+<div *ngIf="!familyLoading">
+  <app-graph [nodes]="family" [labelAccessor]="labelAccessor" [links]="familyLinks"></app-graph>
+</div>

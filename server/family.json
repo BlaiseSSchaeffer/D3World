@@ -1,0 +1,105 @@
+[
+    {
+        "firstName": "Deb",
+        "lastName": "Schaeffer",
+        "gender": "F",
+        "dob": "",
+        "dod": null,
+        "generation": 0,
+        "parents": null,
+        "children": [
+            {
+                "firstName": "Blaise",
+                "lastName": "Schaeffer"
+            },
+            {
+                "firstName": "Mackenzie",
+                "lastName": "Schaeffer"
+            },
+            {
+                "firstName": "Brent",
+                "lastName": "Schaeffer"
+            }
+        ]
+    },
+    {
+        "firstName": "Scot",
+        "lastName": "Schaeffer",
+        "gender": "M",
+        "dob": "",
+        "dod": null,
+        "generation": 0,
+        "parents": null,
+        "children": [
+            {
+                "firstName": "Blaise",
+                "lastName": "Schaeffer"
+            },
+            {
+                "firstName": "Mackenzie",
+                "lastName": "Schaeffer"
+            },
+            {
+                "firstName": "Brent",
+                "lastName": "Schaeffer"
+            }
+        ]
+    },
+    {
+        "firstName": "Blaise",
+        "lastName": "Schaeffer",
+        "gender": "M",
+        "dob": "",
+        "dod": null,
+        "generation": 1,
+        "parents": [
+            {
+                "firstName": "Deb",
+                "lastName": "Schaeffer"
+            },
+            {
+                "firstName": "Scot",
+                "lastName": "Schaeffer"
+            }
+        ],
+        "children": null
+    },
+    {
+        "firstName": "Mackenzie",
+        "lastName": "Schaeffer",
+        "gender": "F",
+        "dob": "",
+        "dod": null,
+        "generation": 1,
+        "parents": [
+            {
+                "firstName": "Deb",
+                "lastName": "Schaeffer"
+            },
+            {
+                "firstName": "Scot",
+                "lastName": "Schaeffer"
+            }
+        ],
+        "children": null
+    },
+    {
+        "firstName": "Brent",
+        "lastName": "Schaeffer",
+        "gender": "M",
+        "dob": "",
+        "dod": null,
+        "generation": 1,
+        "parents": [
+            {
+                "firstName": "Deb",
+                "lastName": "Schaeffer"
+            },
+            {
+                "firstName": "Scot",
+                "lastName": "Schaeffer"
+            }
+        ],
+        "children": null
+    }
+]
