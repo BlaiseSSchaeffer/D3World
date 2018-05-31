@@ -1,4 +1,4 @@
-const filePath = '/Users/blaiseschaeffer/Documents/D3/2ndGen/d3-world/server/family.json'
+const filePath = __dirname + '/family.json'
 const fs = require('fs');
 const http = require('http');
 const url = require('url');
