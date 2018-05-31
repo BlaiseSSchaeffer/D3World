@@ -26,6 +26,38 @@ export class D3Service {
     svg.call(zoomBehaviour);
   }
 
+  /** Binds zoomable behaviour to a button element
+   *
+   * Set button id='zoom-in' to zoom in
+   *
+   * Set button id='zoom-out' to zoom out
+  */
+  applyClickZoomableBehavior(buttonElement, svgElement, containerElement) {
+    const button = select(buttonElement);
+    const svg = select(svgElement);
+    const container = select(containerElement);
+
+    const zoomed = () => {
+      const transform = event.transform;
+      container.attr('transform', transform);
+    };
+
+    const zoomIt = zoom().scaleExtent(this.scaleExtent).on('zoom', zoomed);
+
+    const id = buttonElement.id;
+    if (id === 'zoom-in') {
+      button.on('click', () => {
+        zoomIt.scaleBy(svg, 1.2);
+      });
+
+    } else if (id === 'zoom-out') {
+      button.on('click', () => {
+        zoomIt.scaleBy(svg, 0.8);
+      });
+    }
+  }
+
+
   /** Bind draggable behaviour to an svg element */
   applyDraggableBehaviour(element, node: SimulationNodeDatum, graph: ForceDirectedGraph) {
     const d3Element = select(element);

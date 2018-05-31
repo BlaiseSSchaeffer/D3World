@@ -1,12 +1,12 @@
 <svg:g [attr.transform]="'translate(' + appNodeVisual.x + ',' + appNodeVisual.y + ')'">
-      <svg:circle
-        class="node"
-        cx="0"
-        cy="0"
-        [attr.r]="radius"
-        [ngStyle]="style">
-      </svg:circle>
-      <svg:text class="label" [attr.x]="labelX" [attr.y]="labelY" [attr.alignment-baseline]="labelAlignmentBaseling">
-        {{appNodeVisual[labelAccessor]}}
-      </svg:text>
-    </svg:g>
+  <svg:circle
+    class="node"
+    cx="0"
+    cy="0"
+    [attr.r]="radius"
+    [ngStyle]="style">
+  </svg:circle>
+  <svg:text *ngIf="labelAccessor" class="label" [attr.x]="labelX" [attr.y]="labelY" [attr.alignment-baseline]="labelAlignmentBaseling">
+    {{appNodeVisual[labelAccessor]}}
+  </svg:text>
+</svg:g>
