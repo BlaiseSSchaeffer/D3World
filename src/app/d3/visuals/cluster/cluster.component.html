@@ -1,5 +1,15 @@
+<!-- <app-zoom-buttons [clickZoomableInSvg]="svg" [clickZoomableInContainer]="zoomContainer"></app-zoom-buttons> -->
 <svg:svg #svg [attr.width]="svgOptions.width" [attr.height]="svgOptions.height">
-  <svg:g [appZoomable]="svg">
-    <!-- <svg:g [appNodeVisual]="node" [appDraggableNode]="node" [draggableInGraph]="graph" *ngFor="let node of nodes"></svg:g> -->
+  <svg:g #zoomContainer [appZoomable]="svg">
+    <svg:g
+      [appNodeVisual]="node" 
+      *ngFor="let node of nodes">
+    </svg:g>
+    <!-- <svg:g
+      [appNodeVisual]="node" 
+      *ngFor="let node of nodes"
+      [appDraggableNode]="node"
+      [draggableInGraph]="cluster">
+    </svg:g> -->
   </svg:g>
 </svg:svg>

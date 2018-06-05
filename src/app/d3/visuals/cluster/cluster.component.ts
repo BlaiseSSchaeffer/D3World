@@ -20,6 +20,13 @@ export class ClusterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.cluster = this.d3Service.getForceDirectedCluster(this.nodes, this.svgOptions);
+
+    this.cluster.ticker.subscribe(
+      () => {
+        this.ref.markForCheck();
+      }
+    );
   }
 
   get svgOptions() {

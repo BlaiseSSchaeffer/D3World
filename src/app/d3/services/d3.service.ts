@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ForceDirectedGraph } from '../models/force-directed-graph.model';
 import { SimulationNodeDatum, SimulationLinkDatum, select, event, zoom, drag } from 'd3';
 import { SvgOptions } from '../models/svg-options.model';
+import { ForceDirectedCluster } from '../models/force-directed-cluster.model';
 
 @Injectable()
 export class D3Service {
@@ -95,4 +96,9 @@ export class D3Service {
     return graph;
   }
 
+  /** No interact with the document, purely physical calculations with d3 */
+  getForceDirectedCluster(nodes: SimulationNodeDatum[], svgOptions: SvgOptions) {
+    const cluster = new ForceDirectedCluster(nodes, svgOptions);
+    return cluster;
+  }
 }

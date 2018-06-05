@@ -1,10 +1,12 @@
-import { SimulationNodeDatum, Simulation, forceSimulation, forceCenter } from 'd3';
-import { forceAttract } from 'd3-force-attract';
-import { forceCluster } from 'd3-force-cluster';
+import { SimulationNodeDatum, Simulation, forceSimulation, forceCenter, forceManyBody } from 'd3';
+// import { forceAttract } from 'd3-force-attract';
+// import { forceCluster } from 'd3-force-cluster';
 import { SvgOptions } from './svg-options.model';
 import { Subject } from 'rxjs/Subject';
 
 const FORCE = {
+    CHARGE: 0,
+    GRAVITY: 0.02,
     STRENGTH: 0.01
 };
 
@@ -31,16 +33,26 @@ export class ForceDirectedCluster {
             const ticker = this.ticker;
 
             this.simulatiom = forceSimulation()
-                .force('attract', forceAttract()
-                    .target([svgOptoions.width / 2, svgOptoions.height / 2])
-                    .strength(FORCE.STRENGTH));
+                .force('charge', forceManyBody()
+                    .strength(FORCE.CHARGE));
 
-            //     this.simulatiom.force('cluster', forceCluster()
-            //         .centers());
+            this.simulatiom.force('gravity', forceManyBody()
+                .strength(FORCE.GRAVITY));
+
+            this.simulatiom.on('tick', function () {
+                ticker.next(this);
+            });
+
+            this.initNodes();
         }
 
         this.simulatiom.force('center', forceCenter(svgOptoions.width / 2, svgOptoions.height / 2));
         this.simulatiom.restart();
+    }
+
+    initNodes() {
+        this.isSimulationInitialized();
+        this.simulatiom.nodes(this.nodes);
     }
 
     isSimulationInitialized() {
