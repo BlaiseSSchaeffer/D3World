@@ -1,6 +1,24 @@
-<svg #svg [attr.width]="svgOptions.width" [attr.height]="svgOptions.height">
-  <g [appZoomable]="svg">
-    <g [appLinkVisual]="link" *ngFor="let link of links"></g>
-    <g [appNodeVisual]="node" [labelAccessor]="labelAccessor" [appDraggableNode]="node" [draggableInGraph]="graph" *ngFor="let node of nodes"></g>
-  </g>
-</svg>
+<app-zoom-buttons [clickZoomableInSvg]="svg" [clickZoomableInContainer]="zoomContainer"></app-zoom-buttons>
+<svg:svg #svg [attr.width]="svgOptions.width" [attr.height]="svgOptions.height">
+  <svg:g #zoomContainer [appZoomable]="svg">
+    <svg:g
+      [appLinkVisual]="link"
+      [cssClass]="link[cssClassAccessor]"
+      *ngFor="let link of links">
+    </svg:g>
+    <svg:g
+      [appNodeVisual]="node"
+      [labelAccessor]="labelAccessor"
+      [cssClass]="node[cssClassAccessor]"
+      *ngFor="let node of nodes">
+    </svg:g>
+    <!-- <svg:g
+      [appNodeVisual]="node"
+      [labelAccessor]="labelAccessor"
+      [cssClass]="node[cssClassAccessor]"
+      [appDraggableNode]="node"
+      [draggableInGraph]="graph"
+      *ngFor="let node of nodes">
+    </svg:g> -->
+  </svg:g>
+</svg:svg>

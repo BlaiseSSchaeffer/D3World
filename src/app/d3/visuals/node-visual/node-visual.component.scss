@@ -3,5 +3,21 @@
 }
 
 .node {
-    cursor: default;
+    cursor: pointer;
+}
+
+.male {
+    fill: rgba(0, 0, 255, 1);
+
+    &--light {
+        fill: rgba(0, 0, 255, .3);
+    }
+}
+
+.female {
+    fill: rgba(255, 192, 203, 1);
+
+    &--light {
+        fill: rgba(255, 192, 203, .3);
+    }
 }

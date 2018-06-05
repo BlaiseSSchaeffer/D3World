@@ -14,6 +14,7 @@ export class GraphComponent implements OnInit {
   @Input() nodes: SimulationNodeDatum[];
   @Input() links: SimulationLinkDatum<SimulationNodeDatum>[];
   @Input() labelAccessor: string;
+  @Input() cssClassAccessor: string;
   graph: ForceDirectedGraph;
   private _svgOptions = new SvgOptions(800, 800);
 

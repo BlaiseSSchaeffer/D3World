@@ -16,8 +16,10 @@ export class FamilyMemberNode implements SimulationNodeDatum {
     gender: 'M' | 'F';
     dob: Date;
     dod: Date;
+    generation: number;
     parents: Person[];
     children: Person[];
+    cssClass: string;
 
 
     constructor(
@@ -29,14 +31,30 @@ export class FamilyMemberNode implements SimulationNodeDatum {
         generation: number,
         parents: Person[],
         children: Person[]) {
-        this.id = firstName + lastName;
-    }
 
-    getId() {
-        if (!this.id) {
-            return this.id = this.firstName + this.lastName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.dob = dob;
+        this.dod = dod;
+        this.generation = generation;
+        this.parents = parents;
+        this.children = children;
+
+        this.id = firstName + lastName;
+
+        switch (this.gender) {
+            case 'M':
+                this.cssClass = 'male';
+                break;
+
+            case 'F':
+                this.cssClass = 'female';
+                break;
+
+            default:
+                break;
         }
-        return this.id;
     }
 
 }
