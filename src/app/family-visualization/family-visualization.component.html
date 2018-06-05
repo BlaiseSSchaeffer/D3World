@@ -1,4 +1,9 @@
 <div *ngIf="familyLoading"></div>
 <div *ngIf="!familyLoading">
-  <app-graph [nodes]="family" [labelAccessor]="labelAccessor" [links]="familyLinks"></app-graph>
+  <app-graph
+    [nodes]="family"
+    [links]="familyLinks"
+    [labelAccessor]="labelAccessor"
+    [cssClassAccessor]="cssClassAccessor">
+  </app-graph>
 </div>

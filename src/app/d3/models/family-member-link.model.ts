@@ -6,6 +6,8 @@ export class FamilyMemberLink implements SimulationLinkDatum<FamilyMemberNode> {
     target: FamilyMemberNode | string | number;
     index?: number;
 
+    cssClass: string;
+
     constructor(
         source: FamilyMemberNode | string | number,
         target: FamilyMemberNode | string | number

@@ -1,12 +1,29 @@
 <svg:g [attr.transform]="'translate(' + appNodeVisual.x + ',' + appNodeVisual.y + ')'">
   <svg:circle
+    *ngIf="isSelected"
+    tabindex="0"
+    class="node"
+    cx="0"
+    cy="0"
+    [attr.r]="radius * 2.5"
+    [ngClass]="cssClass + '--light'"
+    (click)="onClick()">
+  </svg:circle>
+  <svg:circle
+    tabindex="0"
     class="node"
     cx="0"
     cy="0"
     [attr.r]="radius"
-    [ngStyle]="style">
+    [ngClass]="cssClass"
+    (click)="onClick()">
   </svg:circle>
-  <svg:text *ngIf="labelAccessor" class="label" [attr.x]="labelX" [attr.y]="labelY" [attr.alignment-baseline]="labelAlignmentBaseling">
+  <svg:text
+    *ngIf="labelAccessor"
+    class="label"
+    [attr.x]="labelX"
+    [attr.y]="labelY"
+    [attr.alignment-baseline]="labelAlignmentBaseling">
     {{appNodeVisual[labelAccessor]}}
   </svg:text>
 </svg:g>

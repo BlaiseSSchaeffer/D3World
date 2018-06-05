@@ -5,14 +5,16 @@ import { FamilyMemberNode } from '../d3/models/family-member-node.model';
 import { FamilyMemberLink } from '../d3/models/family-member-link.model';
 import { D3Service } from '../d3/services/d3.service';
 import { Person } from '../d3/models/person.model';
+import { NodeService } from '../d3/services/node.service';
 
 @Component({
-  selector: 'app-visualization',
+  selector: 'app-family-visualization',
   templateUrl: './family-visualization.component.html',
   styleUrls: ['./family-visualization.component.scss'],
   providers: [
     FamilyService,
-    D3Service
+    D3Service,
+    NodeService
   ]
 })
 export class FamilyVisualizationComponent implements OnInit, OnDestroy {
@@ -23,6 +25,7 @@ export class FamilyVisualizationComponent implements OnInit, OnDestroy {
   public family: FamilyMemberNode[] = [];
   public familyLinks: FamilyMemberLink[] = [];
   public labelAccessor = 'firstName';
+  public cssClassAccessor = 'cssClass';
 
   constructor(private familyService: FamilyService) { }
 
@@ -35,8 +38,7 @@ export class FamilyVisualizationComponent implements OnInit, OnDestroy {
 
     this.familyChangedSub = this.familyService.familyChanged.subscribe(
       (family: FamilyMemberNode[]) => {
-        this.family = family;
-        this.buildGraph();
+        this.buildGraph(family);
         console.log('Family');
         console.log(this.family);
         console.log('Family Links');
@@ -51,7 +53,9 @@ export class FamilyVisualizationComponent implements OnInit, OnDestroy {
     this.familyChangedSub.unsubscribe();
   }
 
-  buildGraph() {
+  buildGraph(family: FamilyMemberNode[]) {
+    this.constructNodes(family);
+
     let parent: FamilyMemberNode;
     let children: Person[];
     let parentFirstName: string;
@@ -88,6 +92,27 @@ export class FamilyVisualizationComponent implements OnInit, OnDestroy {
     }
 
     this.findParents();
+  }
+
+  constructNodes(fetchedFamily: FamilyMemberNode[]) {
+    const constructedFamily: FamilyMemberNode[] = [];
+    let fetchedMember: FamilyMemberNode;
+    let constructedMember: FamilyMemberNode;
+    for (let i = 0; i < fetchedFamily.length; i++) {
+      fetchedMember = fetchedFamily[i];
+      constructedMember = new FamilyMemberNode(
+        fetchedMember.firstName,
+        fetchedMember.lastName,
+        fetchedMember.gender,
+        fetchedMember.dob,
+        fetchedMember.dod,
+        fetchedMember.generation,
+        fetchedMember.parents,
+        fetchedMember.children
+      );
+      constructedFamily.push(constructedMember);
+    }
+    this.family = constructedFamily;
   }
 
   findParents() {
