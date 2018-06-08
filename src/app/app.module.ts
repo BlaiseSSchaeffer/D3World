@@ -15,6 +15,9 @@ import { ClusterComponent } from './d3/visuals/cluster/cluster.component';
 import { ClickZoomableDirective } from './d3/directives/click-zoomable.directive';
 import { ZoomButtonsComponent } from './zoom-buttons/zoom-buttons.component';
 import { ClusterVisualizationComponent } from './cluster-visualization/cluster-visualization.component';
+import { BarChartComponent } from './d3/visuals/bar-chart/bar-chart.component';
+import { PieChartComponent } from './d3/visuals/pie-chart/pie-chart.component';
+import { BarVisualComponent } from './d3/visuals/bar-visual/bar-visual.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { ClusterVisualizationComponent } from './cluster-visualization/cluster-v
     ClusterComponent,
     ClickZoomableDirective,
     ZoomButtonsComponent,
-    ClusterVisualizationComponent
+    ClusterVisualizationComponent,
+    BarChartComponent,
+    PieChartComponent,
+    BarVisualComponent
   ],
   imports: [
     BrowserModule,

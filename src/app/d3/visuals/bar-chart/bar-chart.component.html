@@ -1,0 +1,9 @@
+<app-zoom-buttons [clickZoomableInSvg]="svg" [clickZoomableInContainer]="zoomContainer"></app-zoom-buttons>
+<svg:svg #svg [attr.width]="svgOptions.width" [attr.height]="svgOptions.height">
+  <svg:g #zoomContainer [appZoomable]="svg">
+    <svg:g
+      *ngFor="let bar of bars"
+      [appBarVisual]="bar">
+    </svg:g>
+  </svg:g>
+</svg:svg>
